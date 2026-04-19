@@ -12,11 +12,13 @@ Simple Vite + React 19 project. Entry point: `src/main.jsx`, renders `App.jsx`.
 ## Tech Stack
 
 - Vite 8 + React 19.2 + React DOM 19.2
-- Uses React Compiler (babel-plugin-react-compiler) via `@rolldown/plugin-babel`
+- Uses React Compiler (`babel-plugin-react-compiler`) via `@rolldown/plugin-babel`
 - No TypeScript, no test framework configured
 
 ## Notes
 
 - No pre-commit hooks configured
 - No typecheck command (no TypeScript)
-- Build ignores `info/` directory
+- Build ignores `info/` directory (in `.gitignore` and ESLint config)
+- ESLint ignores `info/` and `dist/` via `eslint.config.js`
+- Uses both `@vitejs/plugin-react` and `@rolldown/plugin-babel` with React Compiler preset (unusual config)
