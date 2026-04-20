@@ -1,24 +1,22 @@
 # Project Context
 
-Simple Vite + React 19 project. Entry point: `src/main.jsx`, renders `App.jsx`.
+Simple Vite + React 19 project. Entry point: `src/main.jsx` → `App.jsx`.
 
 ## Commands
 
 - `npm run dev` - Start dev server
 - `npm run build` - Production build (outputs to `dist/`)
-- `npm run lint` - Run ESLint (ignores `dist/`, `info/`)
+- `npm run lint` - Run ESLint (ignores `info/`, `dist/`)
 - `npm run preview` - Preview production build
 
 ## Tech Stack
 
 - Vite 8 + React 19.2 + React DOM 19.2
-- Uses React Compiler (`babel-plugin-react-compiler`) via `@rolldown/plugin-babel`
-- No TypeScript, no test framework configured
+- React Compiler via `@rolldown/plugin-babel` (unusual dual-plugin config with `@vitejs/plugin-react`)
+- No TypeScript, no test framework
 
 ## Notes
 
-- No pre-commit hooks configured
-- No typecheck command (no TypeScript)
-- Build ignores `info/` directory (in `.gitignore` and ESLint config)
-- ESLint ignores `info/` and `dist/` via `eslint.config.js`
-- Uses both `@vitejs/plugin-react` and `@rolldown/plugin-babel` with React Compiler preset (unusual config)
+- ESLint uses `@antfu/eslint-config` with react + formatters
+- `info/` is ignored in both `.gitignore` and ESLint config
+- `AGENTS.md` is gitignored (not tracked)
