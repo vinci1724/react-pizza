@@ -6,7 +6,8 @@ Simple Vite + React 19 project. Entry point: `src/main.jsx` → `App.jsx`.
 
 - `npm run dev` - Start dev server
 - `npm run build` - Production build (outputs to `dist/`)
-- `npm run lint` - Run ESLint (ignores `info/`, `dist/`)
+- `npm run lint:check` - Run ESLint (no fix)
+- `npm run lint:fix` - Run ESLint with auto-fix
 - `npm run preview` - Preview production build
 
 ## Tech Stack
@@ -20,3 +21,5 @@ Simple Vite + React 19 project. Entry point: `src/main.jsx` → `App.jsx`.
 - ESLint uses `@antfu/eslint-config` with react + formatters
 - `info/` is ignored in both `.gitignore` and ESLint config
 - `AGENTS.md` is gitignored (not tracked)
+- Uses SCSS for styling (see `src/scss/app.scss`)
+- Components are in `src/components/`
