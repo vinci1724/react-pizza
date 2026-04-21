@@ -1,25 +1,32 @@
 # Project Context
 
-Simple Vite + React 19 project. Entry point: `src/main.jsx` → `App.jsx`.
+Vite + React 19 SPA (pizza ordering UI). Entry: `src/main.jsx` → `App.jsx`.
 
 ## Commands
 
-- `npm run dev` - Start dev server
-- `npm run build` - Production build (outputs to `dist/`)
-- `npm run lint:check` - Run ESLint (no fix)
-- `npm run lint:fix` - Run ESLint with auto-fix
-- `npm run preview` - Preview production build
+- `npm run dev` — Start dev server
+- `npm run build` — Production build → `dist/`
+- `npm run lint:check` — ESLint (check only)
+- `npm run lint:fix` — ESLint with auto-fix
 
-## Tech Stack
+No test framework. Always run `lint:check` after changes.
 
-- Vite 8 + React 19.2 + React DOM 19.2
-- React Compiler via `@rolldown/plugin-babel` (unusual dual-plugin config with `@vitejs/plugin-react`)
-- No TypeScript, no test framework
+## Key Conventions
 
-## Notes
+- **React Compiler** is enabled via an unusual dual-plugin setup in `vite.config.js` (`@vitejs/plugin-react` + `@rolldown/plugin-babel` with `reactCompilerPreset`). Don't remove either plugin.
+- **ESLint** uses `@antfu/eslint-config` with `react: true` and `formatters: true`. This means ESLint also formats CSS, SCSS, HTML, JSON, and Markdown — don't add Prettier or another formatter.
+- Semicolons are required (`stylistic.semi: true`).
+- `antfu/top-level-function` rule is explicitly off — arrow-function component declarations at the top level are fine.
+- `info/` directory is ignored by both `.gitignore` and ESLint.
 
-- ESLint uses `@antfu/eslint-config` with react + formatters
-- `info/` is ignored in both `.gitignore` and ESLint config
-- `AGENTS.md` is gitignored (not tracked)
-- Uses SCSS for styling (see `src/scss/app.scss`)
-- Components are in `src/components/`
+## SCSS Architecture
+
+- Global styles: `src/scss/app.scss` (imports variables, normalize, then all component partials)
+- Variables: `src/scss/_variables.scss`
+- Each component has a matching SCSS partial in `src/scss/components/`, barrel-imported via `_all.scss`.
+- Naming convention: `PizzaBlock.jsx` → `_pizza-block.scss` (kebab-case for files).
+- Style new components by adding a partial to `src/scss/components/`, importing it in `_all.scss`.
+
+## Gitignored Files
+
+`AGENTS.md`, `CLAUDE.md`, `QWEN.md`, `.agents/`, `.claude/`, `.qwen/`, `skills-lock.json` — all gitignored. These are agent-only files, never tracked.

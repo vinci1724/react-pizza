@@ -1,7 +1,19 @@
+import { useState } from 'react';
+
+const sortList = ['популярности', 'цене', 'алфавиту'];
+
 export const Sort = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedSort, setSelectedSort] = useState(sortList[0]);
+
+  const onCangeSort = (sort) => {
+    setSelectedSort(sort);
+    setIsOpen(false);
+  };
+
   return (
-    <div class="sort">
-      <div class="sort__label">
+    <div className="sort">
+      <div className="sort__label">
         <svg
           width="10"
           height="6"
@@ -15,15 +27,23 @@ export const Sort = () => {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span>популярности</span>
+        <span onClick={() => setIsOpen(prev => !prev)}>{selectedSort}</span>
       </div>
-      <div class="sort__popup">
-        <ul>
-          <li class="active">популярности</li>
-          <li>цене</li>
-          <li>алфавиту</li>
-        </ul>
-      </div>
+      {isOpen && (
+        <div className="sort__popup">
+          <ul>
+            {sortList.map(name => (
+              <li
+                key={name}
+                onClick={() => onCangeSort(name)}
+                className={selectedSort === name && 'active'}
+              >
+                {name}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
