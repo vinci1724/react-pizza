@@ -29,4 +29,4 @@ No test framework. Always run `lint:check` after changes.
 
 ## Gitignored Files
 
-`AGENTS.md`, `CLAUDE.md`, `QWEN.md`, `.agents/`, `.claude/`, `.qwen/`, `skills-lock.json` — all gitignored. These are agent-only files, never tracked.
+`AGENTS.md`, `CLAUDE.md`, `QWEN.md`, `.agents/`, `.claude/`, `.qwen/`, `.zed/`, `skills-lock.json` — all gitignored. These are agent/editor-only files, never tracked.
