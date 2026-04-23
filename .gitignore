@@ -23,9 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-AGENTS.md
-CLAUDE.md
-QWEN.md
 .agents/
 .claude/
 .qwen/
