@@ -1,25 +1,14 @@
-import { useState } from 'react';
+import { categories } from '../constants';
 
-export const Categories = () => {
-  const [activeCategory, setActiveCategory] = useState('all');
-
-  const categories = [
-    { category: 'all', title: 'Все' },
-    { category: 'meat', title: 'Мясные' },
-    { category: 'vegetarian', title: 'Вегетарианская' },
-    { category: 'grill', title: 'Гриль' },
-    { category: 'spicy', title: 'Острые' },
-    { category: 'closed', title: 'Закрытые' },
-  ];
-
+export const Categories = ({ value, onChangeCategory }) => {
   return (
     <div className="categories">
       <ul>
         {categories.map(obj => (
           <li
             key={obj.category}
-            onClick={() => setActiveCategory(obj.category)}
-            className={activeCategory === obj.category && 'active'}
+            onClick={() => onChangeCategory(obj.category)}
+            className={value === obj.category ? 'active' : undefined}
           >
             {obj.title}
           </li>

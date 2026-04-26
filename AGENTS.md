@@ -1,5 +1,3 @@
-# Project Context
-
 Vite + React 19 SPA (pizza ordering UI). Entry: `src/main.jsx` → `App.jsx`.
 
 ## Commands
@@ -10,29 +8,26 @@ Vite + React 19 SPA (pizza ordering UI). Entry: `src/main.jsx` → `App.jsx`.
 - `npm run lint:check` — ESLint (check only)
 - `npm run lint:fix` — ESLint with auto-fix
 
-No test framework. Always run `lint:check` after changes.
+Always run `lint:check` after changes. No test framework.
 
 ## Key Conventions
 
-- **React Compiler** is enabled via dual plugins in `vite.config.js` (`@vitejs/plugin-react` + `@rolldown/plugin-babel` with `reactCompilerPreset`). Don't remove either plugin.
-- **ESLint** uses `@antfu/eslint-config` with `react: true` and `formatters: true`. ESLint formats CSS, SCSS, HTML, JSON, and Markdown — don't add Prettier or another formatter.
-- Semicolons are required (`stylistic.semi: true`).
+- **React Compiler** enabled via dual plugins in `vite.config.js`: `@vitejs/plugin-react` + `@rolldown/plugin-babel` with `reactCompilerPreset`. Don't remove either.
+- **ESLint** uses `@antfu/eslint-config` with `react: true` and `formatters: true`. Formats CSS, SCSS, HTML, JSON, Markdown — don't add Prettier.
+- Semicolons required (`stylistic.semi: true`).
 - `antfu/top-level-function` rule is off — arrow-function components at top level are fine.
-- `info/` directory is ignored by ESLint only (not `.gitignore`).
+- `info/` directory ignored by ESLint only (not `.gitignore`).
 
-## SCSS Architecture
+## Styling
 
-- Global styles: `src/scss/app.scss` (imports variables, normalize, then all component partials)
+- Global SCSS: `src/scss/app.scss` (imports variables, normalize, component partials via `_all.scss`)
 - Variables: `src/scss/_variables.scss`
-- Each component has a matching SCSS partial in `src/scss/components/`, barrel-imported via `_all.scss`.
-- Naming: `PizzaBlock.jsx` → `_pizza-block.scss` (kebab-case for filenames).
-- New components: add partial to `src/scss/components/`, import it in `_all.scss`.
+- Component styles: `_component-name.scss` (kebab-case) in `src/scss/components/`
+- CSS Modules only for `NotFoundBlock` — all other components use global SCSS partials
 
-## Gitignored Files
+## Architecture
 
-`CLAUDE.md`, `QWEN.md`, `.agents/`, `.claude/`, `.qwen/`, `skills-lock.json` — gitignored, never tracked.
-
-## Architecture Notes
-
-- `react-router-dom` is a dependency but routing is currently commented out in `main.jsx`.
-- Components with sub-files use directory pattern: `PizzaBlock/index.jsx`, `PizzaBlock/Skeleton.jsx`.
+- Routing: `/` (Home), `/cart` (Cart), `*` (NotFound)
+- `main.jsx` wraps `<App />` in `<BrowserRouter>`
+- Components with sub-files use directory pattern: `PizzaBlock/index.jsx`, `PizzaBlock/Skeleton.jsx`
+- Skeleton loaders colocated: `PizzaBlock/Skeleton.jsx` next to `PizzaBlock/index.jsx`
