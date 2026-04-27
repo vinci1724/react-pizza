@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 
 import { Header } from './components/Header';
@@ -11,6 +12,9 @@ export const SearchContext = createContext(undefined);
 
 const App = () => {
   const [searchValue, setSearchValue] = useState('');
+
+  const filter = useSelector(state => state.filter.value);
+  const dispatch = useDispatch();
 
   return (
     <div className="wrapper">

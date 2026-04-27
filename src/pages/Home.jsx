@@ -15,7 +15,7 @@ export const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [categoryId, setCategoryId] = useState('all');
   const [sortType, setSortType] = useState(sortList[0]);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const categoryIndex = categories.findIndex(obj => obj.category === categoryId);
   const category = categoryIndex > 0 ? `category=${categoryIndex}` : '';
