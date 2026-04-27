@@ -1,8 +1,12 @@
 import { Search as SearchIcon, X } from 'lucide-react';
+import { use } from 'react';
 
+import { SearchContext } from '../../App';
 import styles from './Search.module.scss';
 
-const Search = ({ searchValue, setSearchValue }) => {
+const Search = () => {
+  const { searchValue, setSearchValue } = use(SearchContext);
+
   return (
     <div className={styles.root}>
       <SearchIcon className={styles.icon} />

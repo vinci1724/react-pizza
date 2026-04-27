@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 
+import { SearchContext } from '../App';
 import { Categories } from '../components/Categories';
 import Pagination from '../components/Pagination';
 import PizzaBlock from '../components/PizzaBlock';
@@ -7,7 +8,9 @@ import { Skeleton } from '../components/PizzaBlock/Skeleton';
 import { Sort } from '../components/Sort';
 import { categories, sortList } from '../constants';
 
-export const Home = ({ searchValue }) => {
+export const Home = () => {
+  const { searchValue } = use(SearchContext);
+
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [categoryId, setCategoryId] = useState('all');
